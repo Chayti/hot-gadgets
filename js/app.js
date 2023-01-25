@@ -96,12 +96,16 @@ const loadPhoneDetails = async id => {
 
 const displayPhoneDetails = phone => {
     console.log(phone);
-    const modalTitle = document.getElementById('phoneDetailModalLabel');
-    modalTitle.innerText = phone.name;
     const phoneDetails = document.getElementById('phone-details');
     console.log(phone.mainFeatures.sensors[0]);
     phoneDetails.innerHTML = `
-        <p><span class="fw-bold">Release Date:</span> ${phone.releaseDate ? phone.releaseDate : 'No Release Date Found'}</p>
+        <div class="mb-4" style="background-color: rgba(13, 110, 253, 0.05);" >
+             <div class="w-50 mx-auto">
+                <img src="${phone.image}" width="100" height="260" class="card-img-top p-3" alt="...">
+             </div>
+        </div>
+        <h4 class="fw-bold">${phone.name}</h4>
+        <p class="pt-4 pb-0"><span class="fw-bold">Release Date:</span> ${phone.releaseDate ? phone.releaseDate : 'No Release Date Found'}</p>
         <p><span class="fw-bold">Storage:</span> ${phone.mainFeatures ? phone.mainFeatures.storage : 'No Storage Information '}</p>
         <p><span class="fw-bold">Others:</span> ${phone.others ? phone.others.Bluetooth : 'No Bluetooth Information'}</p>
         <p><span class="fw-bold">Sensor:</span> ${phone.mainFeatures.sensors ? phone.mainFeatures.sensors[0] : 'no sensor'}</p>
