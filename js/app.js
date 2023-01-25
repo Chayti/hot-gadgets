@@ -8,10 +8,10 @@ const loadPhones = async (searchText, dataLimit) => {
 const displayPhones = (phones, dataLimit) => {
     const phonesContainer = document.getElementById('phones-container');
     phonesContainer.textContent = '';
-    // display 10 phones only 
+    // display 6 phones only 
     const showAll = document.getElementById('show-all');
-    if (dataLimit && phones.length > 10) {
-        phones = phones.slice(0, 10);
+    if (dataLimit && phones.length > 6) {
+        phones = phones.slice(0, 6);
         showAll.classList.remove('d-none');
     }
     else {
@@ -32,12 +32,15 @@ const displayPhones = (phones, dataLimit) => {
         const phoneDiv = document.createElement('div');
         phoneDiv.classList.add('col');
         phoneDiv.innerHTML = `
-        <div class="card p-4 bg-secondary-subtle">
-            <img height="320" src="${phone.image}" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">${phone.phone_name}</h5>
-                <p class="card-text" style="text-align:justify">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                <button onclick="loadPhoneDetails('${phone.slug}')" href="#" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#phoneDetailModal">Show Details</button>
+        <div class="card p-4">
+            <div style="background-color: rgba(13, 110, 253, 0.05);">
+             <img src="${phone.image}" class="card-img-top p-5" alt="...">
+            </div>
+            <div class="card-body text-center">
+                <h5 class="card-title fw-bold">${phone.phone_name}</h5>
+                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                <h6 class="fw-bold">$999</h6>
+                <button onclick="loadPhoneDetails('${phone.slug}')" href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#phoneDetailModal">Show Details</button>
                 
             </div>
         </div>
@@ -58,13 +61,13 @@ const processSearch = (dataLimit) => {
 // handle search button click
 document.getElementById('btn-search').addEventListener('click', function () {
     // start loader
-    processSearch(10);
+    processSearch(6);
 })
 
 // search input field enter key handler
 document.getElementById('search-field').addEventListener('keypress', function (e) {
     if (e.key === 'Enter') {
-        processSearch(10);
+        processSearch(6);
     }
 });
 
